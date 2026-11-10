@@ -40,17 +40,13 @@
   .section-heading { margin-bottom: 32px; }
   .section-heading > :last-child:not(:first-child) { max-width: 340px; font-size: 13px; line-height: 1.65; }
   .practice-grid { gap: 17px; }
-  .practice-card { min-height: 340px; border-radius: 3px; padding: 29px 28px 22px; background: transparent; border-color: #d0cfbf; }
-  .card-top { flex-direction: row-reverse; margin-bottom: 36px; }
-  .card-top > span { font-size: 25px; color: $gold; }
-  .card-top .icon { color: $gold; width: 34px; height: 34px; }
+  .practice-card { min-height: 430px; --card-bg: transparent; --card-line: #d0cfbf; }
   .practice-card h3 { font-size: 35px; max-width: 260px; margin-bottom: 20px; }
   .practice-card p { font-size: 12px; line-height: 1.7; margin-bottom: 24px; }
   .practice-card .text-link { border-top-color: #bba46b70; color: $gold; font-size: 10px; }
-  .practice-grid > div:first-child .practice-card { background: $forest; color: $cream; border-color: $forest; }
-  .practice-grid > div:first-child .practice-card p { color: #dae0d4; }
-  .practice-grid > div:nth-child(2) .practice-card { background: transparent; }
-  .practice-grid > div:nth-child(3) .practice-card { background: $sage; }
+  .practice-grid > div:first-child .practice-card { --card-bg: #{$forest}; --card-fg: #{$cream}; --card-soft: #dae0d4; --card-line: #bba46b55; --card-fill: #24402f; }
+  .practice-grid > div:nth-child(2) .practice-card { --card-bg: transparent; }
+  .practice-grid > div:nth-child(3) .practice-card { --card-bg: #{$sage}; }
   .demo-area-note { margin-top: 16px; font-size: 9px; }
   .about-section { background: $cream; padding-top: 28px; padding-bottom: 65px; }
   .about-grid { gap: 40px; }
@@ -121,8 +117,8 @@
     .hero-card { right: -25px; bottom: -33px; }
     .section-heading { grid-template-columns: 1.45fr 1fr; gap: 48px; align-items: center; }
     .section-heading > :last-child:not(:first-child) { border-left: 1px solid #bba46b85; padding-left: 32px; }
-    .practice-card { min-height: 360px; padding-inline: 23px; }
-    .practice-card h3 { font-size: 31px; }
+    .practice-card { min-height: 400px; }
+    .practice-card h3 { font-size: 27px; }
     .about-grid { grid-template-columns: 1fr 1fr; gap: 70px; }
     .about-section .about-visual { width: calc(100% - 42px); }
     .institutional-inner { padding-block: 66px; }
@@ -142,16 +138,15 @@
     .hero-visual { max-width: 470px; }
     .hero-card { width: 310px; padding-block: 26px; }
     .practice-section { padding-bottom: 40px; }
-    .practice-card { min-height: 380px; padding: 30px 34px 25px; }
+    .practice-card { min-height: 480px; }
     .practice-card h3 { font-size: 39px; }
-    .card-top { margin-bottom: 43px; }
     .about-section { padding-block: 25px 75px; }
     .about-grid { gap: 100px; }
     .institutional-inner { padding-block: 68px; }
     .process-section { padding-block: 48px 50px; }
     .steps-line { display: none; }
-    .steps li::before { content: ''; position: absolute; left: 50px; right: 0; top: 23px; height: 1px; background: #bba46b85; }
-    .steps li::after { content: ''; position: absolute; right: 0; top: 18px; width: 10px; height: 10px; border: 1px solid $gold; border-radius: 50%; background: $cream; }
+    .steps li::before { content: ''; position: absolute; left: 50px; right: 0; top: 23px; height: 1px; background: #bba46b85; transform: scaleX(var(--draw, 1)); transform-origin: left; }
+    .steps li::after { content: ''; position: absolute; right: 0; top: 18px; width: 10px; height: 10px; border: 1px solid $gold; border-radius: 50%; background: $cream; transform: scale(var(--node, 1)); }
     .step-number { margin-bottom: 14px; font-size: 29px; }
     .service-content { padding: 48px 65px; max-width: 650px; }
     .service-section { padding: 0; }

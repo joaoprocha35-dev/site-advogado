@@ -1,9 +1,9 @@
 import { site } from '../../src/js/config/site.js';
 import { areas, faqs } from './data.mjs';
-import { esc, icon, button, eyebrow, breadcrumb, areaCards, accordion, process, serviceInfo, contactChannels, finalContact, arch, lines } from './components.mjs';
+import { esc, icon, button, eyebrow, breadcrumb, areaCards, accordion, process, serviceInfo, contactChannels, finalContact, arch, doubleArch, lines } from './components.mjs';
 
 const image = (name, alt, cls = '', eager = false, path = '') => `<img class="${cls}" src="${path}public/assets/images/${name}.jpg" alt="${alt}" width="736" height="${name === 'advogado-escritorio' ? '1078' : '1104'}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
-const heading = (name, title, intro, label = '') => `<section class="page-heading"><div class="container">${breadcrumb(name)}${eyebrow(label || 'ADVOCACIA COM ATENÇÃO AO SEU CONTEXTO')}<h1>${title}</h1><p class="lead">${intro}</p></div></section>`;
+const heading = (name, title, intro, label = '') => `<section class="page-heading"><div class="container">${breadcrumb(name)}${eyebrow(label || 'ADVOCACIA COM ATENÇÃO AO SEU CONTEXTO')}<h1>${title}</h1><p class="lead">${intro}</p></div>${doubleArch('heading-arch')}</section>`;
 
 export function homePage() {
   return `<section class="hero"><img class="hero-background hero-composite" src="public/assets/images/inicio/hero-fundo.png" alt="Profissional em composição com a arquitetura do escritório" width="1657" height="949" fetchpriority="high" decoding="async"><div class="container hero-grid"><div class="hero-copy">${eyebrow('ADVOCACIA COM ATENÇÃO AO SEU CONTEXTO')}<h1>${lines(['Clareza para', 'decidir.', '<em>Segurança</em>', '<em>para seguir.</em>'])}</h1><p class="hero-description">Orientação jurídica próxima, técnica e objetiva para você tomar decisões com informação e tranquilidade.</p><div class="hero-actions">${button('Converse com o escritório','contato.html','button-gold')}</div></div></div></section>

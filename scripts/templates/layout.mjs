@@ -1,5 +1,5 @@
 import { site, contactLinks } from '../../src/js/config/site.js';
-import { esc, icon, button, finalContact } from './components.mjs';
+import { esc, icon, button, finalContact, veil } from './components.mjs';
 
 export function layout({title, description, active = '', path = '', file = '', content, home = false}) {
   const nav = [['index.html','Início','home'],['sobre.html','Sobre','about'],['areas.html','Áreas de atuação','areas'],['contato.html','Contato','contact']];
@@ -19,11 +19,13 @@ export function layout({title, description, active = '', path = '', file = '', c
   <meta name="robots" content="${site.demo ? 'noindex, nofollow' : 'index, follow'}">
   <meta name="theme-color" content="#122720">
   ${canonical ? `<link rel="canonical" href="${esc(canonical)}"><meta property="og:url" content="${esc(canonical)}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="website">` : ''}
+  <script>(function(){var d=document.documentElement,c=d.classList,s='veil-load';c.add('js');try{if(sessionStorage.getItem('veil')){s='veil-enter';sessionStorage.removeItem('veil')}}catch(e){}c.add(s);setTimeout(function(){if(!c.contains('veil-ok'))c.remove('veil-load','veil-enter')},5000)})()</script>
   <link rel="icon" type="image/svg+xml" href="${path}public/assets/icons/favicon.svg">
   <link rel="stylesheet" href="${path}public/assets/css/main.css">
   <script type="module" src="${path}src/js/main.js"></script>
 </head>
 <body class="${home ? 'page-home' : 'page-inner'}${active === 'about' ? ' page-about' : ''}">
+  ${veil()}
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   ${site.demo ? '<div class="demo-notice">Versão demonstrativa <span>· Dados e conteúdo sujeitos à revisão do escritório</span></div>' : ''}
   <header class="site-header"><div class="container header-inner">${brand}<nav class="desktop-nav" aria-label="Navegação principal">${navLinks}</nav>${button('Entre em contato','contato.html','button-outline header-cta',path)}<button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu" hidden><span></span><span></span></button><noscript><nav class="nojs-nav" aria-label="Navegação">${navLinks}</nav></noscript></div></header>

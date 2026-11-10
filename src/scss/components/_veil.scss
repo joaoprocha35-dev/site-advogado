@@ -1,0 +1,46 @@
+@use '../abstracts' as *;
+
+// Cortina em arco: tela de carregamento (primeira visita) e transição entre páginas.
+// Só aparece quando o script inline do <head> marca <html> com .js e um estado.
+.veil { display: none; }
+.js .veil { display: grid; place-items: center; position: fixed; inset: 0; z-index: 200; overflow: hidden; color: $cream; visibility: hidden; pointer-events: none; }
+.veil-panel { position: absolute; left: -15%; right: -15%; top: -26vh; height: calc(100% + 52vh); border-radius: 50% / 26vh; background: radial-gradient(ellipse at 50% 42%, #1c3229, $forest 62%); transform: translateY(130vh); }
+.veil-content { position: relative; display: grid; justify-items: center; opacity: 0; text-align: center; padding-inline: 24px; }
+.veil-mark { width: 92px; height: 88px; color: $gold; }
+.veil-mark path { stroke-dasharray: 1; }
+.veil-name { overflow: hidden; max-width: none; margin-top: 22px; padding-bottom: .12em; font-family: $serif; font-weight: 500; font-size: clamp(46px, 7vw, 74px); line-height: 1.05; letter-spacing: -.02em; }
+.veil-name span { display: block; }
+.veil-rule { width: 128px; height: 1px; margin-block: 14px 16px; background: $gold; }
+.veil-tag { max-width: none; font-size: 10px; font-weight: 500; letter-spacing: .34em; text-indent: .34em; text-transform: uppercase; color: #c9c8ad; }
+
+.veil-load .veil, .veil-enter .veil, .veil-leave .veil { visibility: visible; pointer-events: auto; }
+.veil-load .veil-panel, .veil-enter .veil-panel { transform: none; }
+.veil-load .veil-content, .veil-enter .veil-content { opacity: 1; }
+.veil-enter, .veil-leave {
+  .veil-name, .veil-rule, .veil-tag { display: none; }
+}
+
+// Carregamento: o arco é desenhado, o nome sobe, a linha abre e a assinatura aparece.
+.veil-load .veil-mark path { stroke-dashoffset: 1; animation: veil-draw 1.15s cubic-bezier(.65, 0, .2, 1) forwards; }
+.veil-load .veil-mark path:nth-child(2) { animation-delay: .25s; }
+.veil-load .veil-mark path:nth-child(3) { animation-delay: .6s; animation-duration: .6s; }
+.veil-load .veil-name span { transform: translateY(112%); animation: veil-rise .85s cubic-bezier(.2, .7, .2, 1) .6s forwards; }
+.veil-load .veil-rule { transform: scaleX(0); animation: veil-grow .9s cubic-bezier(.65, 0, .2, 1) 1s forwards; }
+.veil-load .veil-tag { opacity: 0; animation: veil-fade .7s ease-out 1.25s forwards; }
+
+// Saída de página: a cortina sobe de baixo e cobre a tela.
+.veil-leave .veil-panel { transform: none; transition: transform .7s cubic-bezier(.76, 0, .24, 1); }
+.veil-leave .veil-content { opacity: 1; transition: opacity .3s .35s; }
+
+// Entrada: a cortina continua subindo e revela a página.
+.veil-out .veil-panel { transform: translateY(-130vh); transition: transform 1s cubic-bezier(.76, 0, .24, 1); }
+.veil-out .veil-content { opacity: 0; transform: translateY(-70px); transition: opacity .4s, transform .8s cubic-bezier(.76, 0, .24, 1); }
+
+@keyframes veil-draw { to { stroke-dashoffset: 0; } }
+@keyframes veil-rise { to { transform: none; } }
+@keyframes veil-grow { to { transform: none; } }
+@keyframes veil-fade { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .veil { display: none; }
+}

@@ -18,12 +18,15 @@ export const icon = (name, cls = '') => `<svg class="icon ${cls}" width="24" hei
 export const button = (text, href = 'contato.html', cls = '', path = '') => `<a class="button ${cls}" href="${path}${href}">${text}${icon('arrow')}</a>`;
 export const eyebrow = text => `<p class="eyebrow">${text}</p>`;
 export const arch = (cls = '') => `<svg class="decorative-arch ${cls}" viewBox="0 0 402 582" fill="none" aria-hidden="true"><path data-draw d="M1 581V201C1 90.5 90.5 1 201 1s200 89.5 200 200v380" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>`;
+export const doubleArch = (cls = '') => `<svg class="decorative-arch ${cls}" viewBox="0 0 402 582" fill="none" aria-hidden="true"><path data-draw d="M1 581V201C1 90.5 90.5 1 201 1s200 89.5 200 200v380" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/><path data-draw d="M81 581V201c0-66.3 53.7-120 120-120s120 53.7 120 120v380" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>`;
+// Cortina em arco usada no carregamento e na transição entre páginas (ver src/js/modules/veil.js).
+export const veil = () => `<div class="veil" aria-hidden="true"><div class="veil-panel"></div><div class="veil-content"><svg class="veil-mark" viewBox="1 2 22 21" fill="none" stroke="currentColor" stroke-width=".45" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M5 22V10a7 7 0 0 1 14 0v12"/><path pathLength="1" d="M9 22V10a3 3 0 0 1 6 0v12"/><path pathLength="1" d="M2 22h20"/></svg><p class="veil-name"><span>${esc(site.lawyer)}</span></p><span class="veil-rule"></span><p class="veil-tag">Advocacia &amp; Consultoria</p></div></div>`;
 export const lines = content => content.map(line => `<span class="line-mask"><span class="line-content">${line}</span></span>`).join(' ');
 export function breadcrumb(name, path = '', parent) {
   return `<nav class="breadcrumb" aria-label="Você está em"><ol><li><a href="${path}index.html">Início</a></li>${parent ? `<li><a href="${path}areas.html">Áreas de atuação</a></li>` : ''}<li aria-current="page">${name}</li></ol></nav>`;
 }
 export function areaCards(path = '', home = false) {
-  return `<div class="practice-grid">${areas.map((a, i) => `<div data-reveal><article class="practice-card"><div class="card-top">${icon(a.icon)}<span>0${i+1}</span></div><h3><a href="${path}areas/${a.slug}.html">${home ? a.short : a.name}</a></h3><p>${a.description}</p><a class="text-link" href="${path}areas/${a.slug}.html">Conheça a atuação ${icon('diagonal')}</a></article></div>`).join('')}</div>`;
+  return `<div class="practice-grid">${areas.map(a => `<div data-reveal><article class="practice-card"><span class="card-niche">${icon(a.icon)}</span><h3><a href="${path}areas/${a.slug}.html">${home ? a.short : a.name}</a></h3><p>${a.description}</p><a class="text-link" href="${path}areas/${a.slug}.html">Conheça a atuação ${icon('diagonal')}</a></article></div>`).join('')}</div>`;
 }
 let accordionId = 0;
 export const accordion = (items = faqs) => {

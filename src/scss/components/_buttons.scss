@@ -1,14 +1,22 @@
 @use '../abstracts' as *;
-.button { display: inline-flex; justify-content: center; align-items: center; gap: 25px; min-height: 49px; padding: 13px 23px; border: 1px solid transparent; border-radius: 5px; font-size: 12px; font-weight: 500; line-height: 1.6; text-align: left; transition: background .2s, color .2s, border-color .2s; }
-.button .icon { width: 18px; height: 18px; }
-.button-gold { background: $gold; color: $forest; }
-@media (hover: hover) and (pointer: fine) { .button-gold:hover { background: #dfc999; } }
-.button-dark { background: $forest; color: $cream; }
-@media (hover: hover) and (pointer: fine) { .button-dark:hover { background: #2b4537; } }
-.button-outline { border-color: #b69a6380; color: inherit; }
-@media (hover: hover) and (pointer: fine) { .button-outline:hover { background: #b69a6318; } }
-.button-plain { border-color: $line; }
+// O preenchimento do botão sobe a partir da base, no mesmo movimento dos cards e da cortina.
+.button { --btn-fill: transparent; position: relative; isolation: isolate; overflow: hidden; display: inline-flex; justify-content: center; align-items: center; gap: 25px; min-height: 49px; padding: 13px 23px; border: 1px solid transparent; border-radius: 5px; font-size: 12px; font-weight: 500; line-height: 1.6; text-align: left; transition: color .35s, border-color .35s; }
+.button::before { content: ''; position: absolute; inset: -1px; z-index: -1; background: var(--btn-fill); transform: translateY(102%); transition: transform .5s cubic-bezier(.65, 0, .2, 1); }
+.button .icon { width: 18px; height: 18px; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.button-gold { background: $gold; color: $forest; --btn-fill: #e3cf9f; }
+.button-dark { background: $forest; color: $cream; --btn-fill: #2b4537; }
+.button-outline { border-color: #b69a6380; color: inherit; --btn-fill: #b69a6326; }
+.button-plain { border-color: $line; --btn-fill: #e6e9df; }
+.button:focus-visible::before { transform: none; }
+.button:focus-visible .icon { transform: translateX(5px); }
+@media (hover: hover) and (pointer: fine) {
+  .button:hover::before { transform: none; }
+  .button:hover .icon { transform: translateX(5px); }
+  .button-outline:hover, .button-plain:hover { border-color: $gold; }
+}
 .button:disabled { color: #62665d; background: #e3e2d9; cursor: not-allowed; border-color: #d8d9d0; }
+.button:disabled::before { display: none; }
+.button:disabled .icon { transform: none; }
 .text-link { display: inline-flex; gap: 25px; align-items: center; font-size: 12px; font-weight: 500; padding: 8px 0; line-height: 1.5; }
 .text-link .icon { width: 19px; height: 19px; transition: transform .2s; }
 @media (hover: hover) and (pointer: fine) { .text-link:hover .icon { transform: translateX(4px); } }

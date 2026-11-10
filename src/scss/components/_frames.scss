@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+// Moldura de linha dupla: borda externa + fio interno em ouro, como no arco da marca.
+@mixin double-frame($inner: #bba46b66, $gap: 7px) {
+  position: relative;
+  &::before { content: ''; position: absolute; inset: $gap; border: 1px solid $inner; border-radius: inherit; pointer-events: none; }
+  > * { position: relative; }
+}
+.form-panel { @include double-frame; border-radius: 4px; }
+.preparation { @include double-frame(#bba46b80); border: 1px solid #cfd6c5; border-radius: 4px; }
+.contact-aside > div { @include double-frame(#bba46b70, 8px); border-radius: 4px; }
+.page-about .service-info > div { @include double-frame(#bba46b40, 5px); border-radius: 3px; transition: background .4s, border-color .4s; }
+.notice { border-radius: 0 4px 4px 0; }
+
+// Linha de progresso de leitura na base do cabeçalho.
+.site-header::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: $gold; transform: scaleX(var(--progress, 0)); transform-origin: left; pointer-events: none; }
+
+// Arco duplo decorativo no topo das páginas internas.
+.page-heading, .not-found { position: relative; overflow: hidden; }
+.page-heading > .container { position: relative; }
+.heading-arch { display: none; }
+
+// Linhas com resposta ao cursor.
+.related-links a { transition: color .3s, padding .5s cubic-bezier(.2, .7, .2, 1), border-color .3s; }
+.related-links a > .icon:last-child { transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.subject-list article { position: relative; }
+.subject-list article::before { content: ''; position: absolute; left: 0; top: -1px; width: 46px; height: 1px; background: $gold; transition: width .6s cubic-bezier(.2, .7, .2, 1); }
+.editorial-rows article { position: relative; }
+.editorial-rows article::before { content: ''; position: absolute; left: 0; top: -1px; width: 46px; height: 1px; background: $gold; }
+.accordion-trigger { transition: color .3s, padding .45s cubic-bezier(.2, .7, .2, 1); }
+@media (hover: hover) and (pointer: fine) {
+  .related-links a:hover { padding-inline: 14px; border-color: $gold; }
+  .related-links a:hover > .icon:last-child { transform: rotate(45deg); }
+  .subject-list article:hover::before { width: 100%; }
+  .accordion-trigger:hover { padding-left: 10px; color: #6d5a2c; }
+  .page-about .service-info > div:hover { background: #12272066; border-color: $gold; }
+}
+
+@include tablet {
+  .heading-arch { display: block; right: max(40px, calc((100% - 1240px) / 2)); bottom: -2px; height: 82%; width: auto; opacity: .7; }
+  .page-about .heading-arch { display: none; }
+}
+@include desktop {
+  // No desktop, o convite lateral também assume a forma de arco.
+  .contact-aside > div { border-radius: 999px 999px 4px 4px; padding: 84px 30px 34px; text-align: center; }
+  .contact-aside > div .eyebrow { margin-bottom: 14px; }
+}

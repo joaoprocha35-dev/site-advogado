@@ -10,7 +10,11 @@ export function initNavigation() {
   const headerSize = new ResizeObserver(() => document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`));
   headerSize.observe(header);
   toggle.hidden = false;
-  const markScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 20);
+  const markScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
+    const range = document.documentElement.scrollHeight - window.innerHeight;
+    header.style.setProperty('--progress', range > 0 ? Math.min(1, window.scrollY / range).toFixed(4) : 0);
+  };
   markScroll();
   window.addEventListener('scroll', markScroll, { passive: true });
 
