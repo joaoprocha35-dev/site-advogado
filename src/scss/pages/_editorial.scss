@@ -1,0 +1,67 @@
+@use '../abstracts' as *;
+
+.line-mask { display: block; overflow: hidden; padding-bottom: .16em; margin-bottom: -.16em; }
+.line-content { display: block; }
+.decorative-arch { position: absolute; color: $gold; pointer-events: none; }
+.hero { isolation: isolate; background: $cream; overflow: clip; }
+.hero-background { position: absolute; inset: 0; background: $forest; z-index: -1; }
+.hero-media-stage { padding: 18px; margin: -18px; min-width: 0; }
+.hero-arch { inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); z-index: 2; }
+.hero-emblem { box-shadow: 0 0 0 8px $forest; }
+.hero h1 em { color: $gold; }
+.about-section { background: $sage; }
+.about-section .about-visual { padding: 0 18px 20px 0; margin-bottom: 16px; }
+.about-photo-mask { overflow: hidden; position: relative; border-radius: 160px 160px 5px 5px; aspect-ratio: 4 / 4.8; }
+.about-section .about-photo-mask img { width: 100%; height: calc(100% + 20px); aspect-ratio: auto; object-fit: cover; object-position: 50% 24%; border-radius: 0; position: absolute; top: -10px; }
+.about-frame { position: absolute; inset: 15px 0 6px 16px; border: 1px solid $gold; border-radius: 160px 160px 5px 5px; }
+.about-inset { position: absolute; bottom: 70px; right: 0; width: 32%; border: 6px solid $sage; box-shadow: 0 12px 25px #12272016; border-radius: 5px; overflow: hidden; }
+.about-section .about-inset img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 18%; border-radius: 0; }
+.about-section .image-caption { bottom: 0; right: 38px; left: 20px; box-shadow: 0 6px 20px #12272008; }
+.institutional-section { color: $cream; background: $forest; overflow: hidden; }
+.institutional-inner { position: relative; text-align: center; padding-block: 70px; }
+.institutional-inner .eyebrow { color: #c9c8ad; font-size: 9px; }
+.institutional-inner h2 { position: relative; z-index: 1; font-size: clamp(40px, 5.2vw, 74px); }
+.institutional-inner h2 em { color: $gold; }
+.institutional-arch { width: 260px; height: 380px; right: -50px; bottom: -145px; opacity: .35; }
+.process-track { position: relative; }
+.steps-line { position: absolute; left: 17px; top: 0; bottom: 0; width: 1px; background: #c6ccbc; transform-origin: top; }
+.steps li { padding-left: 57px; }
+.step-number { background: $cream; padding-bottom: 12px; }
+.service-layout { display: grid; gap: 38px; }
+.service-photo-wrap { overflow: hidden; border-radius: 150px 150px 5px 5px; aspect-ratio: 4/4.5; max-width: 440px; }
+.service-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 29%; }
+.service-content > p:not(.eyebrow) { font-size: 13px; color: #c1cbbf; margin-block: 24px 32px; max-width: 400px; }
+.service-content .service-info { margin-bottom: 20px; }
+.final-contact { position: relative; overflow: hidden; }
+.final-contact-grid { position: relative; }
+.final-contact-grid > div { position: relative; z-index: 1; }
+.final-arch { width: 200px; height: 290px; right: -90px; bottom: -135px; opacity: .45; }
+.site-footer { position: relative; }
+
+@include tablet {
+  .hero-grid { gap: 45px; }
+  .institutional-inner { padding-block: 90px; }
+  .institutional-arch { right: 20px; width: 300px; height: 440px; bottom: -200px; }
+  .steps { grid-template-columns: 1fr; gap: 30px; }
+  .steps li { max-width: 650px; }
+  .service-layout { grid-template-columns: .8fr 1fr; gap: 55px; align-items: center; }
+  .service-content .service-info { column-gap: 18px; }
+  .service-info dd { font-size: 10px; }
+  .final-arch { width: 280px; height: 400px; right: -30px; bottom: -250px; }
+}
+@include desktop {
+  .hero-grid { gap: 82px; }
+  .hero h1 { font-size: clamp(72px, 6.2vw, 90px); }
+  .about-section .about-visual { padding-right: 25px; }
+  .about-inset { right: -20px; bottom: 72px; }
+  .about-section .image-caption { right: 65px; }
+  .steps { grid-template-columns: repeat(4,1fr); gap: 32px; padding-top: 0; }
+  .steps li { padding: 0; border: 0; }
+  .steps-line { width: 100%; height: 1px; left: 0; top: 23px; bottom: auto; transform-origin: left; }
+  .step-number { transform: none; padding: 0 25px 0 0; margin-bottom: 26px; }
+  .service-layout { grid-template-columns: .85fr 1fr; gap: 115px; }
+  .service-photo-wrap { aspect-ratio: 4/4.4; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .practice-card:focus-within, .practice-card:hover, .practice-card .text-link .icon { transform: none; }
+}

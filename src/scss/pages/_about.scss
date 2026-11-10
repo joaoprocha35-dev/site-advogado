@@ -1,0 +1,83 @@
+@use '../abstracts' as *;
+.about-editorial { background: $cream; }
+.editorial-copy h2 { margin-bottom: 25px; }
+.editorial-copy > p:not(.eyebrow) { color: $muted; }
+.editorial-copy .small { margin-top: 20px; }
+.credentials-section { background: #eaece4; }
+.editorial-grid { display: grid; gap: 40px; }
+.editorial-rows article { padding-block: 25px; border-top: 1px solid #cbd1c3; }
+.editorial-rows h3 { font-size: 29px; margin-bottom: 13px; }
+.editorial-rows p { color: $muted; font-size: 12px; overflow-wrap: anywhere; }
+@include tablet { .editorial-grid { grid-template-columns: 1fr 1fr; gap: 70px; } }
+
+// Fundos e enquadramentos exclusivos de sobre.html.
+.page-about {
+  .page-heading {
+    color: $cream;
+    background-color: $forest;
+    background-image: linear-gradient(90deg, #12272066, #12272018), url('../../images/sobre/hero-secao-sobre.png');
+    background-size: cover;
+    background-position: 28% center;
+    background-repeat: no-repeat;
+    border-color: #bba46b40;
+    padding-bottom: 64px;
+  }
+  .page-heading h1 { max-width: 650px; font-size: clamp(50px, 5.2vw, 78px); }
+  .page-heading h1 em { color: $gold; }
+  .page-heading .lead { max-width: 480px; color: #e0e6d9; }
+  .page-heading .eyebrow, .breadcrumb { color: #d0d9c9; }
+  .breadcrumb li + li::before { color: #c5b17b; }
+  .credentials-section {
+    background: #e6e9df url('../../images/sobre/background-secao-a-experiencia-por-tras.png') left center / cover no-repeat;
+  }
+  .credentials-section h2 em { color: #826b37; }
+  .editorial-rows { background: none; }
+  .editorial-rows article { border-color: #b7c1ae; }
+  .editorial-rows p { color: #3e493f; }
+  .service-section {
+    position: relative;
+    background-color: $forest;
+    background-image: none;
+    padding-top: 285px;
+  }
+  .service-section::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 230px;
+    background: $forest url('../../images/sobre/background-tela-sobre-uma-conversa-um-ponto-de-partida.png') right center / cover no-repeat;
+  }
+  .service-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .service-grid > div, .service-info { min-width: 0; }
+  .service-grid > div > p:not(.eyebrow) { max-width: 450px; }
+  .service-info { grid-template-columns: 1fr; gap: 14px; }
+  .service-info > div { padding: 17px; border: 1px solid #c8b88460; border-radius: 6px; background: #12272026; }
+  .service-info dt { color: $cream; }
+  .service-info dd { color: #d5dfcd; }
+  .final-contact {
+    background: #f4f1e8 url('../../images/sobre/background-tela-sobre-o-proximo-passo.png') 64% center / cover no-repeat;
+  }
+  .final-contact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .final-contact-grid > div { max-width: 610px; }
+  .final-contact h2 { font-size: clamp(42px, 4.2vw, 64px); }
+  .final-contact h2 em { color: #826b37; }
+  .final-contact-grid > div > p { max-width: 420px; }
+  @media (min-width: 700px) {
+    .page-heading { background-image: url('../../images/sobre/hero-secao-sobre.png'); background-position: center right; padding-bottom: 82px; }
+    .page-heading h1 { max-width: 58%; }
+    .page-heading .lead { max-width: 54%; }
+    .service-section { padding-top: 315px; }
+    .service-section::before { height: 260px; }
+    .service-info { grid-template-columns: 1fr 1fr; }
+    .final-contact { background-position: right center; }
+  }
+  @media (min-width: 1000px) {
+    .page-heading { padding-bottom: 94px; }
+    .page-heading h1 { max-width: 650px; }
+    .page-heading .lead { max-width: 510px; }
+    .service-section { padding-top: 85px; background-image: url('../../images/sobre/background-tela-sobre-uma-conversa-um-ponto-de-partida.png'); background-size: cover; background-position: right center; background-repeat: no-repeat; }
+    .service-section::before { display: none; }
+    .service-grid { grid-template-columns: minmax(0, .95fr) 1.05fr; gap: 28px 60px; }
+    .service-grid > div, .service-info { grid-column: 1; }
+  }
+}

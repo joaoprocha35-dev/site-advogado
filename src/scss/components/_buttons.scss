@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+.button { display: inline-flex; justify-content: center; align-items: center; gap: 25px; min-height: 49px; padding: 13px 23px; border: 1px solid transparent; border-radius: 5px; font-size: 12px; font-weight: 500; line-height: 1.6; text-align: left; transition: background .2s, color .2s, border-color .2s; }
+.button .icon { width: 18px; height: 18px; }
+.button-gold { background: $gold; color: $forest; }
+@media (hover: hover) and (pointer: fine) { .button-gold:hover { background: #dfc999; } }
+.button-dark { background: $forest; color: $cream; }
+@media (hover: hover) and (pointer: fine) { .button-dark:hover { background: #2b4537; } }
+.button-outline { border-color: #b69a6380; color: inherit; }
+@media (hover: hover) and (pointer: fine) { .button-outline:hover { background: #b69a6318; } }
+.button-plain { border-color: $line; }
+.button:disabled { color: #62665d; background: #e3e2d9; cursor: not-allowed; border-color: #d8d9d0; }
+.text-link { display: inline-flex; gap: 25px; align-items: center; font-size: 12px; font-weight: 500; padding: 8px 0; line-height: 1.5; }
+.text-link .icon { width: 19px; height: 19px; transition: transform .2s; }
+@media (hover: hover) and (pointer: fine) { .text-link:hover .icon { transform: translateX(4px); } }
+.light-link { color: #e7d7b5; }

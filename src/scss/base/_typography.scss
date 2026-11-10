@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+body { font-family: $sans; font-size: 15px; line-height: 1.8; color: $ink; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: $serif; font-weight: 500; line-height: 1.03; letter-spacing: -.035em; }
+h1 { font-size: clamp(3.4rem, 6.3vw, 6rem); }
+h2 { font-size: clamp(2.7rem, 4.1vw, 4rem); }
+h3 { font-size: 2rem; line-height: 1.1; }
+em { font-weight: 400; }
+p { max-width: 64ch; }
+p + p { margin-top: 1.1rem; }
+.eyebrow { font-size: 10px; letter-spacing: .19em; font-weight: 500; line-height: 1.7; text-transform: uppercase; margin-bottom: 23px; }
+.lead { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.7; }
+.small { font-size: 12px; line-height: 1.75; }
+.muted { color: $muted; }
+.gold { color: $gold; }
+::selection { color: $forest; background: #dcc99f; }

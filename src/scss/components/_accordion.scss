@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+.accordion { border-top: 1px solid $line; }
+.accordion-item { border-bottom: 1px solid $line; }
+.accordion-item h3 { font: inherit; letter-spacing: normal; }
+.accordion-trigger { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 24px; min-height: 77px; padding: 23px 0; border: 0; background: none; color: $ink; text-align: left; font-family: $sans; font-size: 13px; font-weight: 500; line-height: 1.65; }
+.plus { flex-shrink: 0; position: relative; width: 24px; height: 24px; border: 1px solid #c8cdbf; border-radius: 50%; transition: transform .3s; }
+.plus::before, .plus::after { content: ''; position: absolute; width: 8px; height: 1px; background: $ink; left: 7px; top: 10px; }
+.plus::after { transform: rotate(90deg); transition: opacity .3s; }
+[aria-expanded='true'] .plus { transform: rotate(180deg); }
+[aria-expanded='true'] .plus::after { opacity: 0; }
+.answer { padding: 0 40px 24px 0; font-size: 13px; color: $muted; }

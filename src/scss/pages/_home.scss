@@ -1,0 +1,92 @@
+@use '../abstracts' as *;
+.hero { background: $forest; color: $cream; position: relative; }
+.hero-grid { display: grid; padding-top: 45px; gap: 38px; }
+.hero-copy { position: relative; z-index: 1; }
+.hero .eyebrow { color: #d5d8cb; font-size: 9px; }
+.eyebrow-dot { padding-inline: 8px; color: #d0b783; }
+.hero h1 { font-size: clamp(3.2rem, 6.4vw, 6.15rem); line-height: .98; letter-spacing: -.035em; }
+.hero h1 em { color: #d0b783; }
+.hero-description { color: #c6cdc1; font-size: 13px; max-width: 365px; margin-top: 26px; line-height: 1.9; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 20px 26px; align-items: center; margin-top: 30px; }
+.hero-secondary { font-size: 11px; display: flex; gap: 16px; padding-block: 12px; align-items: center; }
+.hero-secondary > .icon { width: 15px; height: 15px; }
+.hero-secondary:hover { text-decoration: underline; text-underline-offset: 5px; }
+.hero-signature { display: flex; gap: 12px; align-items: center; font-size: 7px; letter-spacing: .14em; color: #bbc4b6; margin-top: 36px; }
+.signature-line { width: 30px; height: 1px; background: #b69a6390; }
+.hero-visual { position: relative; width: 100%; aspect-ratio: 1 / 1.12; border-radius: 160px 160px 8px 8px; }
+.hero-visual::after { position: absolute; content: ''; inset: 0; border-radius: inherit; background: linear-gradient(0deg, #101c15b0, transparent 35%); pointer-events: none; }
+.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; border-radius: inherit; }
+.photo-label { position: absolute; z-index: 1; left: 24px; bottom: 25px; display: grid; font-size: 8px; letter-spacing: .15em; color: #fff9ed; gap: 3px; }
+.hero-emblem { position: absolute; top: 34px; right: -12px; z-index: 1; width: 64px; height: 64px; border-radius: 50%; border: 1px solid #a99b76; background: $forest; display: grid; place-items: center; color: #cbb585; box-shadow: 0 0 0 8px #14241f; }
+.hero-emblem .icon { width: 28px; height: 34px; }
+.hero-bottom { display: flex; justify-content: space-between; gap: 18px; padding-block: 27px; margin-top: 30px; border-top: 1px solid #ffffff24; color: #bec7ba; font-size: 9px; }
+.hero-bottom a { display: flex; align-items: center; gap: 16px; }
+.hero-bottom a span { font-size: 18px; line-height: 1; color: #d6c093; }
+.about-section { background: #eaece4; }
+.about-grid { display: grid; gap: 40px; }
+.about-visual { position: relative; max-width: 490px; width: 100%; }
+.about-visual img { width: 100%; height: auto; aspect-ratio: 4/4.6; object-fit: cover; object-position: center 30%; border-radius: 7px; }
+.image-caption { position: absolute; bottom: 19px; left: 19px; right: 19px; background: $cream; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 8px; letter-spacing: .13em; border-radius: 3px; }
+.image-caption > .icon { color: #857448; width: 20px; height: 27px; }
+.about-copy > h2 { margin-bottom: 27px; }
+.about-copy > .lead { font-family: $serif; font-size: 25px; margin-bottom: 14px; }
+.about-copy > p:not(.eyebrow):not(.lead) { color: $muted; font-size: 14px; }
+.professional { display: grid; gap: 3px; margin: 27px 0; padding-left: 18px; border-left: 1px solid $gold; }
+.professional strong { font-size: 12px; font-weight: 500; }
+.professional span { font-size: 10px; color: $muted; }
+.steps { display: grid; list-style: none; gap: 30px; margin: 0; }
+.steps li { position: relative; padding-left: 57px; }
+.step-number { position: absolute; left: 0; top: 0; font-family: $serif; font-size: 30px; font-style: italic; color: #797e67; }
+.steps h3 { font-size: 27px; margin-bottom: 12px; }
+.steps p { color: $muted; font-size: 12px; }
+.process-note { margin-top: 35px; padding-top: 20px; border-top: 1px solid $line; color: $muted; max-width: none; }
+.service-section { padding-block: 65px; color: $cream; background: $forest; position: relative; }
+.service-section .eyebrow { color: #c8bd99; }
+.service-section h2 em { color: #c8b88f; }
+.service-grid { display: grid; gap: 40px; }
+.service-grid > div > p:not(.eyebrow) { font-size: 13px; color: #bcc5b8; margin-block: 23px 18px; max-width: 345px; }
+.service-info { display: grid; grid-template-columns: 1fr; gap: 27px; }
+.service-info > div { display: grid; grid-template-columns: 24px 1fr; column-gap: 15px; padding-bottom: 22px; border-bottom: 1px solid #ffffff22; }
+.service-info .icon { grid-row: 1/3; width: 21px; height: 21px; color: #c7b78f; }
+.service-info dt { font-size: 12px; margin-bottom: 8px; }
+.service-info dd { font-size: 10px; color: #bcc5b8; overflow-wrap: anywhere; }
+.faq-grid { display: grid; gap: 33px; }
+.faq-grid > div > p:not(.eyebrow) { font-size: 13px; color: $muted; margin-top: 25px; max-width: 300px; }
+@include tablet {
+  .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 28px; padding-top: 55px; align-items: center; }
+  .hero h1 { font-size: clamp(48px, 6.6vw, 92px); }
+  .hero-visual { aspect-ratio: .75; border-radius: 170px 170px 6px 6px; }
+  .hero-emblem { right: -8px; top: 60px; width: 65px; height: 65px; }
+  .hero-signature { font-size: 6px; margin-top: 38px; gap: 9px; }
+  .hero-description { font-size: 12px; }
+  .hero-actions { gap: 12px; }
+  .hero-bottom { margin-top: 45px; font-size: 10px; }
+  .about-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 55px; }
+  .steps { grid-template-columns: repeat(2,1fr); gap: 40px; }
+  .service-info { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .service-section { padding-block: 80px; }
+  .faq-grid { grid-template-columns: .9fr 1.1fr; gap: 55px; }
+}
+@include desktop {
+  .hero-grid { grid-template-columns: 1.2fr 1fr; padding-top: 50px; gap: 65px; }
+  .hero-copy { padding-block: 15px; }
+  .hero h1 { font-size: clamp(72px, 6.3vw, 94px); }
+  .hero-visual { aspect-ratio: .85; max-height: 625px; border-radius: 220px 220px 5px 5px; }
+  .hero .eyebrow { margin-bottom: 28px; }
+  .hero-description { font-size: 13px; margin-top: 27px; }
+  .hero-actions { gap: 28px; margin-top: 30px; }
+  .hero-signature { font-size: 8px; margin-top: 45px; }
+  .hero-emblem { right: -18px; top: 75px; width: 85px; height: 85px; }
+  .hero-emblem .icon { width: 35px; height: 43px; }
+  .photo-label { left: 30px; bottom: 28px; }
+  .hero-bottom { margin-top: 45px; padding-block: 25px; }
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 120px; }
+  .about-copy { max-width: 450px; }
+  .steps { grid-template-columns: repeat(4,1fr); gap: 32px; padding-top: 15px; }
+  .steps li { padding: 0; border-top: 1px solid $line; }
+  .step-number { position: relative; display: inline-block; background: $cream; padding-right: 22px; transform: translateY(-23px); margin-bottom: -4px; font-size: 35px; }
+  .steps h3 { font-size: 29px; }
+  .service-grid { grid-template-columns: 1fr 1fr; gap: 110px; align-items: center; }
+  .service-section { padding-block: 85px; }
+  .faq-grid { grid-template-columns: 1fr 1.2fr; gap: 100px; }
+}

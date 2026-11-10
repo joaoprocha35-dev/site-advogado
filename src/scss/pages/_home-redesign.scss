@@ -1,0 +1,163 @@
+@use '../abstracts' as *;
+
+// Ajustes exclusivos da página Início; os componentes internos mantêm seu estilo.
+.page-home {
+  background: $cream;
+  .container { width: min(1180px, calc(100% - 44px)); }
+  .section { padding-block: 58px; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; color: $muted; font-size: 9px; letter-spacing: .14em; margin-bottom: 15px; }
+  .eyebrow::before { content: ''; width: 26px; height: 2px; background: $gold; flex-shrink: 0; }
+  h2 { font-size: clamp(36px, 4.3vw, 61px); line-height: 1.04; }
+  h2 em { color: $gold; }
+  .button { border-radius: 3px; font-size: 12px; min-height: 48px; gap: 28px; }
+  .site-header { background: #10271f; }
+  .header-inner { min-height: 82px; }
+  .header-cta { display: none !important; }
+  .brand small { display: none; }
+  .brand > span { font-size: 16px; letter-spacing: .06em; }
+  .brand > .icon { height: 40px; }
+  .desktop-nav { margin-left: auto; gap: 38px; }
+  .hero { background: $forest; overflow: hidden; padding-bottom: 36px; }
+  .hero { display: flex; flex-direction: column; padding-bottom: 0; }
+  .hero-background.hero-composite { position: relative; inset: auto; order: 2; width: 100%; height: auto; background: none; object-fit: contain; z-index: 0; }
+  .hero-grid { position: relative; z-index: 1; padding-bottom: 32px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 42px; padding-top: 46px; align-items: center; }
+  .hero-copy { padding: 0; }
+  .hero-copy > .eyebrow { color: #d2d7c9; }
+  .hero h1 { font-size: clamp(49px, 6.2vw, 86px); line-height: .98; }
+  .hero-description { color: #d2dacd; font-size: 14px; line-height: 1.65; max-width: 360px; margin-top: 27px; }
+  .hero-actions { margin-top: 26px; }
+  .hero-media-stage { padding: 26px 18px 24px 0; margin: 0; }
+  .hero-visual { aspect-ratio: 1 / 1.03; max-height: none; border-radius: 2px; }
+  .hero-visual::after { display: none; }
+  .hero-photo { border-radius: 2px; position: relative; z-index: 1; object-position: center 38%; }
+  .hero-arch { top: -47px; left: 35px; width: calc(100% - 45px); height: calc(100% + 50px); z-index: 2; }
+  .hero-card { position: absolute; bottom: -25px; right: -18px; z-index: 3; width: min(78%, 300px); padding: 23px 27px; background: $cream; color: $forest; border-radius: 2px; font-family: $serif; font-size: 15px; font-weight: 500; letter-spacing: .09em; line-height: 1.3; text-transform: uppercase; box-shadow: 0 12px 25px #071b151a; }
+  .hero-card::before { content: ''; display: block; width: 28px; height: 2px; margin-bottom: 13px; background: $gold; }
+  .hero-card > .signature-line { display: none; }
+  .hero-card p { max-width: none; }
+  .practice-section { padding-bottom: 44px; }
+  .section-heading { margin-bottom: 32px; }
+  .section-heading > :last-child:not(:first-child) { max-width: 340px; font-size: 13px; line-height: 1.65; }
+  .practice-grid { gap: 17px; }
+  .practice-card { min-height: 340px; border-radius: 3px; padding: 29px 28px 22px; background: transparent; border-color: #d0cfbf; }
+  .card-top { flex-direction: row-reverse; margin-bottom: 36px; }
+  .card-top > span { font-size: 25px; color: $gold; }
+  .card-top .icon { color: $gold; width: 34px; height: 34px; }
+  .practice-card h3 { font-size: 35px; max-width: 260px; margin-bottom: 20px; }
+  .practice-card p { font-size: 12px; line-height: 1.7; margin-bottom: 24px; }
+  .practice-card .text-link { border-top-color: #bba46b70; color: $gold; font-size: 10px; }
+  .practice-grid > div:first-child .practice-card { background: $forest; color: $cream; border-color: $forest; }
+  .practice-grid > div:first-child .practice-card p { color: #dae0d4; }
+  .practice-grid > div:nth-child(2) .practice-card { background: transparent; }
+  .practice-grid > div:nth-child(3) .practice-card { background: $sage; }
+  .demo-area-note { margin-top: 16px; font-size: 9px; }
+  .about-section { background: $cream; padding-top: 28px; padding-bottom: 65px; }
+  .about-grid { gap: 40px; }
+  .about-section .about-visual { width: calc(100% - 30px); max-width: 430px; margin: 0 auto 24px; padding: 0; }
+  .about-section .about-visual::before { content: ''; position: absolute; z-index: 0; background: #d8decf; top: 36px; bottom: 24px; left: -24px; width: 100%; }
+  .about-photo-mask { border-radius: 2px; aspect-ratio: 4/4.45; z-index: 1; }
+  .about-section .about-photo-mask img { object-position: center 22%; }
+  .about-frame { z-index: 2; inset: 40px -23px -25px 60px; border-radius: 0; pointer-events: none; }
+  .about-copy { max-width: 470px; }
+  .about-copy h2 { margin-bottom: 26px; }
+  .about-copy > p:not(.eyebrow):not(.lead) { color: $ink; font-size: 14px; line-height: 1.7; }
+  .about-copy .button { margin-top: 24px; }
+  .institutional-section { background: $forest url('../images/inicio/secao-cada-historia-merece.png') center / cover no-repeat; }
+  .institutional-inner { text-align: left; padding-block: 50px; }
+  .institutional-inner h2 { font-size: clamp(35px, 4.3vw, 59px); max-width: 780px; }
+  .institutional-inner .eyebrow { margin-bottom: 13px; }
+  .process-section { padding-block: 48px 52px; }
+  .process-section .section-heading { display: block; margin-bottom: 36px; }
+  .process-section h2 { font-size: clamp(34px, 3.6vw, 51px); }
+  .process-section h2 em { display: block; }
+  .steps { gap: 26px; }
+  .step-number { font-size: 27px; color: $gold; font-style: normal; }
+  .steps h3 { font-size: 27px; margin-bottom: 10px; }
+  .steps p { color: $ink; font-size: 12px; line-height: 1.6; }
+  .steps-line { background: #bba46b70; }
+  .process-note { font-size: 9px; padding-top: 15px; margin-top: 23px; }
+  .service-section { padding: 0; background: $forest; }
+  .service-layout.container { width: 100%; max-width: none; margin: 0; gap: 0; }
+  .service-photo-wrap { max-width: none; width: 100%; height: 100%; min-height: 280px; aspect-ratio: 1.7; border-radius: 0; }
+  .service-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .service-content { padding: 40px 26px; }
+  .service-content .eyebrow { color: #c8cdbd; }
+  .service-content h2 { font-size: clamp(35px, 4vw, 55px); }
+  .service-content .service-info { display: grid; grid-template-columns: 1fr; gap: 11px; margin: 23px 0; }
+  .service-info > div { padding-bottom: 0; border: 0; grid-template-columns: 23px 1fr; column-gap: 12px; }
+  .service-info dt { font-size: 11px; margin: 0; }
+  .service-info dd { font-size: 11px; color: #d2dacb; }
+  .service-info .icon { color: $gold; }
+  .faq-section { padding-block: 43px; }
+  .faq-grid { gap: 25px; }
+  .faq-grid h2 { font-size: clamp(36px, 4vw, 54px); }
+  .faq-grid > div > p:not(.eyebrow) { font-size: 12px; color: $ink; margin-top: 17px; max-width: 285px; line-height: 1.65; }
+  .accordion { border-top: 0; }
+  .accordion-trigger { min-height: 54px; padding-block: 15px; font-size: 12px; }
+  .plus { border: 0; width: 20px; height: 20px; }
+  .plus::before, .plus::after { background: $gold; left: 5px; top: 9px; width: 10px; }
+  .answer { font-size: 12px; }
+  .home-ending { background: $forest url('../images/inicio/Footer.png') right top / cover no-repeat; color: $cream; }
+  .home-ending .final-contact { background: transparent; border: 0; padding-block: 43px; }
+  .home-ending .final-contact-grid { gap: 28px; }
+  .home-ending .final-contact h2 { font-size: clamp(36px, 4vw, 57px); }
+  .home-ending .final-contact .button { margin: 0; background: $gold; color: $forest; }
+  .home-ending .final-contact .eyebrow { color: #ccd2c5; }
+  .home-ending .contact-note, .home-ending .final-channels { color: #cad3c4; font-size: 10px; }
+  .home-ending .site-footer { background: transparent; border-top: 1px solid #ffffff30; padding-top: 24px; }
+  .home-ending .footer-grid { gap: 22px; padding-bottom: 20px; }
+  .home-ending .footer-professional { font-size: 10px; margin-top: 13px; }
+  .home-ending .footer-grid nav { font-size: 11px; }
+  .home-ending .footer-location, .home-ending .footer-channels { font-size: 10px; }
+  .home-ending .footer-bottom { padding-block: 15px; font-size: 9px; }
+
+  @media (min-width: 700px) {
+    .container { width: min(1180px, calc(100% - 100px)); }
+    .hero-grid { grid-template-columns: 1fr 1fr; gap: 65px; padding-top: 68px; padding-bottom: 32px; }
+    .hero-background.hero-composite { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: right center; }
+    .hero h1 { font-size: clamp(51px, 6.3vw, 86px); }
+    .hero-media-stage { padding: 20px 0; }
+    .hero-card { right: -25px; bottom: -33px; }
+    .section-heading { grid-template-columns: 1.45fr 1fr; gap: 48px; align-items: center; }
+    .section-heading > :last-child:not(:first-child) { border-left: 1px solid #bba46b85; padding-left: 32px; }
+    .practice-card { min-height: 360px; padding-inline: 23px; }
+    .practice-card h3 { font-size: 31px; }
+    .about-grid { grid-template-columns: 1fr 1fr; gap: 70px; }
+    .about-section .about-visual { width: calc(100% - 42px); }
+    .institutional-inner { padding-block: 66px; }
+    .service-layout { grid-template-columns: 1fr 1fr; }
+    .service-content { padding: 44px 45px; }
+    .service-photo-wrap { aspect-ratio: auto; min-height: 340px; }
+    .faq-grid { grid-template-columns: .75fr 1.25fr; gap: 45px; }
+    .faq-grid > div:first-child { border-right: 1px solid #bba46b85; padding-right: 38px; }
+    .home-ending .final-contact-grid { grid-template-columns: 1.35fr 1fr; align-items: center; }
+    .home-ending .final-contact-grid > div:nth-child(2) { border-left: 1px solid #ffffff50; padding-left: 50px; }
+  }
+  @media (min-width: 1000px) {
+    .section { padding-block: 65px; }
+    .hero { padding-bottom: 40px; }
+    .hero-grid { gap: 92px; padding-top: 74px; }
+    .hero-media-stage { margin-left: 10px; }
+    .hero-visual { max-width: 470px; }
+    .hero-card { width: 310px; padding-block: 26px; }
+    .practice-section { padding-bottom: 40px; }
+    .practice-card { min-height: 380px; padding: 30px 34px 25px; }
+    .practice-card h3 { font-size: 39px; }
+    .card-top { margin-bottom: 43px; }
+    .about-section { padding-block: 25px 75px; }
+    .about-grid { gap: 100px; }
+    .institutional-inner { padding-block: 68px; }
+    .process-section { padding-block: 48px 50px; }
+    .steps-line { display: none; }
+    .steps li::before { content: ''; position: absolute; left: 50px; right: 0; top: 23px; height: 1px; background: #bba46b85; }
+    .steps li::after { content: ''; position: absolute; right: 0; top: 18px; width: 10px; height: 10px; border: 1px solid $gold; border-radius: 50%; background: $cream; }
+    .step-number { margin-bottom: 14px; font-size: 29px; }
+    .service-content { padding: 48px 65px; max-width: 650px; }
+    .service-section { padding: 0; }
+    .faq-section { padding-block: 44px; }
+    .home-ending .final-contact { padding-block: 43px; }
+    .home-ending .footer-grid { grid-template-columns: 1.2fr 1.2fr .8fr; align-items: center; gap: 30px; padding-block: 0 20px; }
+    .home-ending .footer-grid nav { justify-content: center; }
+  }
+}

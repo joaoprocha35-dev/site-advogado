@@ -1,0 +1,18 @@
+@use '../abstracts' as *;
+.form-panel { padding: 28px 23px; background: $paper; border: 1px solid $line; border-radius: 9px; }
+.form-panel h2 { font-size: clamp(36px, 3.5vw, 48px); margin-bottom: 18px; }
+.form-status-notice { font-size: 12px; color: $muted; padding: 14px 16px; border-left: 2px solid $gold; background: $cream; margin-bottom: 27px; }
+.form-field { display: grid; margin-top: 21px; gap: 7px; }
+.form-field label { font-size: 12px; font-weight: 500; }
+input, select, textarea { min-width: 0; width: 100%; background: #fff; border: 1px solid #cbd0c5; border-radius: 4px; color: $ink; padding: 12px 13px; font-size: 16px; min-height: 49px; }
+input::placeholder, textarea::placeholder { font-size: 12px; color: #697268; opacity: 1; }
+textarea { resize: vertical; }
+select { font-size: 13px; }
+.field-error { font-size: 11px; color: #a32828; }
+.field-error:empty { display: none; }
+[aria-invalid='true'] { border-color: #a32828; }
+form > .small { margin: 18px 0 23px; }
+form .small a { text-decoration: underline; text-underline-offset: 3px; }
+.form-result { font-size: 13px; margin-top: 18px; }
+.form-result:empty { margin: 0; }
+@include tablet { .form-panel { padding: 40px; } }
